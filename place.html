@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="Country page: Madrid, Spain — place.html for WDD131." />
+  <meta name="author" content="Joshue Murillo" />
+  <title>WDD 131 – Place: Madrid, Spain – Joshue Murillo</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="styles/base.css">
+
+  <!-- JS (deferred) -->
+  <script src="scripts/weather.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <h1 id="site-title">Places I Like — Madrid, Spain</h1>
+      <nav aria-label="Primary">
+        <ul class="nav-list">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="place.html" aria-current="page">Place</a></li>
+          <li><a href="https://your-github-username.github.io/wdd131/">Project</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <!-- Hero (responsive) -->
+    <section class="hero" aria-label="Hero image of Madrid">
+      <!-- Use <picture> to swap WebP images depending on viewport -->
+      <picture>
+        <source srcset="images/hero-large.webp" media="(min-width: 1000px)" type="image/webp">
+        <source srcset="images/hero-medium.webp" media="(min-width: 600px)" type="image/webp">
+        <img src="images/hero-small.webp" alt="Panoramic view of Madrid skyline" loading="lazy">
+      </picture>
+      <div class="hero-caption">
+        <h2>Madrid, Spain</h2>
+        <p>A vibrant capital with rich culture, food, and friendly people.</p>
+      </div>
+    </section>
+
+    <!-- Two-column content (main + aside) -->
+    <div class="layout">
+      <section class="content card" aria-labelledby="about-title">
+        <h3 id="about-title">About Madrid</h3>
+        <p>
+          I was born in Madrid, Spain. The city blends history and modern life — from museums to lively plazas.
+          My parents are from Ecuador and I enjoy playing piano and sports in my free time.
+        </p>
+
+        <h4>Practical info</h4>
+        <ul>
+          <li>Language: Spanish</li>
+          <li>Currency: Euro (€)</li>
+          <li>Famous for: Museums, food, nightlife</li>
+        </ul>
+      </section>
+
+      <aside class="weather card" aria-labelledby="weather-title">
+        <h3 id="weather-title">Weather <span class="weather-icon-emoticon" aria-hidden="true"></span></h3>
+
+        <!-- SVG icon shown only on mobile (via CSS) -->
+        <img id="weatherSvg" src="images/weather-icon.svg" alt="Cloud and sun icon" class="weather-svg" />
+
+        <dl>
+          <dt>Temperature</dt>
+          <dd id="tempDisplay">7 °C</dd>
+
+          <dt>Wind Speed</dt>
+          <dd id="windDisplay">10 km/h</dd>
+
+          <dt>Wind Chill</dt>
+          <dd id="windChillDisplay">—</dd>
+        </dl>
+        <p class="small">Wind chill shown when applicable (conditions coded to check).</p>
+      </aside>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p>&copy; <span id="currentYear"></span> Joshue Murillo — Madrid, Spain</p>
+      <p id="lastModified">Last modified: </p>
+    </div>
+  </footer>
+</body>
+</html>
