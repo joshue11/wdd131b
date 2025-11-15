@@ -1,0 +1,110 @@
+/* base.css - WDD131 place page */
+
+/* Google fonts if you want (keeps page light). Example using system fonts instead. */
+
+:root{
+  --bg: #f7f7fb;
+  --card: #ffffff;
+  --primary: #004080; /* deep blue */
+  --accent: #e65c00; /* warm accent */
+  --text: #222;
+  --muted: #666;
+  --max-width: 1000px;
+  --gap: 1rem;
+  --radius: 10px;
+  --wrap-padding: 1rem;
+}
+
+/* --- Reset-ish --- */
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.5;
+}
+
+/* Layout helpers */
+.wrap{
+  max-width:var(--max-width);
+  margin:0 auto;
+  padding:var(--wrap-padding);
+}
+
+/* Header */
+.site-header{
+  background:var(--primary);
+  color: #fff;
+}
+.site-header .wrap{
+  display:flex;
+  gap:1rem;
+  align-items:center;
+  justify-content:space-between;
+  padding:1rem;
+}
+#site-title{font-size:1.1rem; margin:0}
+.nav-list{list-style:none; display:flex; gap:0.6rem; margin:0; padding:0}
+.nav-list a{
+  color:white; text-decoration:none; font-weight:600; padding:0.35rem 0.6rem; border-radius:6px;
+}
+.nav-list a:hover{background:rgba(255,255,255,0.08)}
+
+/* Hero */
+.hero{position:relative; margin-top:1rem; border-radius:var(--radius); overflow:hidden}
+.hero picture, .hero img{display:block; width:100%; height:auto; object-fit:cover}
+.hero-caption{
+  position:absolute; left:1rem; bottom:1rem; background:rgba(0,0,0,0.45); color:white; padding:0.8rem; border-radius:8px;
+  max-width:70%;
+}
+.hero-caption h2{margin:0 0 0.25rem 0; font-size:1.4rem}
+
+/* Two-column layout */
+.layout{display:grid; grid-template-columns:1fr; gap:var(--gap); margin-top:1rem}
+
+/* Cards */
+.card{background:var(--card); padding:1rem; border-radius:var(--radius); box-shadow: 0 6px 18px rgba(0,0,0,0.06)}
+.content h3, .weather h3{margin-top:0}
+
+/* Weather SVG hidden by default (will show in mobile) */
+.weather-svg{width:48px; height:auto; display:none}
+
+/* Weather emoticon using pseudo-element ONLY on larger screens */
+.weather-icon-emoticon::after{
+  content: "⛅";
+  margin-left:0.4rem;
+  font-size:1.1rem;
+  display:inline-block;
+  vertical-align:middle;
+}
+
+/* Footer */
+.site-footer{background:var(--primary); color:white; margin-top:2rem}
+.site-footer .wrap{display:flex; justify-content:space-between; gap:1rem; padding:1rem; align-items:center; flex-wrap:wrap}
+.small{font-size:0.9rem; color:var(--muted)}
+
+/* Accessibility: focus visible */
+a:focus{outline:3px solid #ffd580; outline-offset:2px}
+
+/* Media queries - responsive rules (mobile-first) */
+@media (min-width: 600px){
+  .layout{grid-template-columns: 2fr 1fr; align-items:start}
+  .hero-caption{max-width:50%}
+  /* show emoticon pseudo-element in larger view; hide svg */
+  .weather-svg{display:none}
+  .weather-icon-emoticon{display:inline}
+}
+
+/* On small screens, show svg icon and hide emoticon pseudo-element (emoticon still present but hidden) */
+@media (max-width: 599px){
+  .weather-svg{display:block; margin:0.6rem 0}
+  .weather-icon-emoticon{display:none}
+}
+
+/* Desktop wider adjustments for better layout */
+@media (min-width: 1000px){
+  .hero{height:420px}
+  .hero img{height:420px; width:100%; object-fit:cover}
+}
